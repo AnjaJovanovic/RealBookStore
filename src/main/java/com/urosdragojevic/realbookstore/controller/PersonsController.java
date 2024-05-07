@@ -77,7 +77,7 @@ public class PersonsController {
     public String updatePerson(Person person, HttpSession session, @RequestParam("csrfToken") String csrfToken)
         throws AccessDeniedException{
             String csrf = session.getAttribute("CSRF_TOKEN").toString();
-            if(!csrfToken.equals(csrfToken)) {
+            if(!csrf.equals(csrfToken)) {
                 throw new AccessDeniedException("Forbidden");
             }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
